@@ -8,5 +8,5 @@ spring:
       server:
         git:
           uri: https://github.com/felipemarinhodev/microservice-alura-repo
-          search-paths: fornecedor
+          search-paths: source/fornecedor
  
