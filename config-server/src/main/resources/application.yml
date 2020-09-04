@@ -9,5 +9,5 @@ spring:
     config:
       server:
         native:
-          search-locations: /Users/felipemarinho/Dev/Alura/Spring Cloud
+          search-locations: /Users/felipemarinho/Dev/Alura/Spring Cloud/workspace/properties
  
