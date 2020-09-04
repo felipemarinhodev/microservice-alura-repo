@@ -2,7 +2,7 @@ spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/fornecedor
     username: postgres
-    password: docker
+    password: $docker_postgre_password
   jpa:
     database: POSTGRESQL
     database-platform: org.hibernate.dialect.PostgreSQL9Dialect
