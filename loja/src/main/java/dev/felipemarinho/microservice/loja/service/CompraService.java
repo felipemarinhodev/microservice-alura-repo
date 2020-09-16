@@ -35,7 +35,7 @@ public class CompraService {
 		compraSalva.setTempoDePreparo(pedido.getTempoDePreparo());
 		compraSalva.setEnderecoDestino(info.getEndereco());
 		LOG.info("Pedido {} realizado com sucesso!", compraSalva.getPedidoId());
-				
+		
 		return compraSalva;
 	}
 
