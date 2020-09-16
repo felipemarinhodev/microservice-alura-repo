@@ -12,6 +12,7 @@ import dev.felipemarinho.microservice.loja.client.FornecedorClient;
 import dev.felipemarinho.microservice.loja.controller.dto.CompraDTO;
 import dev.felipemarinho.microservice.loja.dto.InfoFornecedorDTO;
 import dev.felipemarinho.microservice.loja.dto.InfoPedidoDTO;
+import dev.felipemarinho.microservice.loja.repository.CompraRepository;
 
 @Service
 public class CompraService {
@@ -20,6 +21,9 @@ public class CompraService {
 	
 	@Autowired
 	private FornecedorClient fornecedorClient;
+	
+	@Autowired
+	private CompraRepository compraRepository;
 	
 	@HystrixCommand(fallbackMethod = "realizarCompraFallback")
 	public Compra realizarCompra(CompraDTO compra) {
@@ -34,6 +38,7 @@ public class CompraService {
 		compraSalva.setPedidoId(pedido.getId());
 		compraSalva.setTempoDePreparo(pedido.getTempoDePreparo());
 		compraSalva.setEnderecoDestino(info.getEndereco());
+		compraRepository.save(compraSalva);
 		LOG.info("Pedido {} realizado com sucesso!", compraSalva.getPedidoId());
 		
 		return compraSalva;
@@ -43,5 +48,10 @@ public class CompraService {
 		Compra compraFallback = new Compra();
 		compraFallback.setEnderecoDestino(compra.getEndereco().toString());
 		return compraFallback;
+	}
+
+	@HystrixCommand
+	public Compra getById(Long id) {
+		return compraRepository.findById(id).orElse(new Compra());
 	}
 }
