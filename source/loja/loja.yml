@@ -9,3 +9,13 @@ spring:
     database-platform: org.hibernate.dialect.PostgreSQL9Dialect
     hibernate:
       ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+        id:
+          new_generator_mappings: false
+        show_sql: true
+        temp:
+          use_jdbc_metadata_defaults: false
+        type: trace
+        use_sql_comments: true
