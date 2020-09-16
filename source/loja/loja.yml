@@ -1,0 +1,11 @@
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/loja
+    username: postgres
+    password: docker
+  jpa:
+    database: POSTGRESQL
+    database-platform: org.hibernate.dialect.PostgreSQL9Dialect
+    hibernate:
+      ddl-auto: update
